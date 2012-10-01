@@ -78,6 +78,19 @@
 			<version>${org.springframework.security-version}</version>
 		</dependency>
 
+    <!-- JdbcUserConfiguration -->		
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-jdbc</artifactId>
+        <version>${org.springframework-version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <version>1.3.159</version>
+    </dependency>
+
 		<!-- CGLib -->
 		<dependency>
 			<groupId>cglib</groupId>
