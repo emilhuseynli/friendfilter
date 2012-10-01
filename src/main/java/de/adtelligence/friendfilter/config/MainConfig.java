@@ -8,6 +8,4 @@ import org.springframework.context.annotation.ComponentScan.Filter;
 @Configuration
 @ComponentScan(basePackages = "de.adtelligence.friendfilter", excludeFilters = { @Filter(Configuration.class) })
 @PropertySource("classpath:de/adtelligence/friendfilter/config/application.properties")
-public class MainConfig {
-
-}
+public class MainConfig {}

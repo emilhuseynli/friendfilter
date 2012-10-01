@@ -13,8 +13,6 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 public class WebMvcConfig {
 
   public void addViewControllers(ViewControllerRegistry registry) {
-    registry.addViewController("/signin");
-    registry.addViewController("/signout");
   }
 
   @Bean
@@ -28,5 +26,4 @@ public class WebMvcConfig {
   public void addResourceHandlers(ResourceHandlerRegistry registry) {
     registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
     }
-
 }
