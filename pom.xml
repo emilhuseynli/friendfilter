@@ -53,7 +53,13 @@
 		    <artifactId>spring-social-facebook</artifactId>
 		    <version>${spring-social-facebook.version}</version>
 		</dependency>
-
+		
+    <!-- CGLib-->
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>2.2.2</version>
+		</dependency>		
 				
 		<!-- AspectJ -->
 		<dependency>
