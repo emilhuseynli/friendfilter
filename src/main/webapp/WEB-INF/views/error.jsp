@@ -6,7 +6,7 @@
   </head>
   <body>
 
-  <h1>Ups... Something went wrong...</h2>
+  <h3>Ups... Something went wrong...</h3>
   
   <p>
    <a href="<c:url value="/" />">home</a> | <a href="<c:url value="/signin" />">sign in</a> | <a href="<c:url value="/signout" />">sign out</a> 

@@ -16,16 +16,20 @@
 
 package de.adtelligence.friendfilter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import org.springframework.social.facebook.api.Facebook;
+import org.springframework.social.facebook.api.Page;
 import org.springframework.social.facebook.api.Reference;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Simple little @Controller that invokes Facebook and renders the result.
@@ -45,12 +49,29 @@ public class HomeController {
   @RequestMapping(value = "/", method = RequestMethod.GET)
   public String home(Model model) {
     try {
-      List<Reference> friends = facebook.friendOperations().getFriends();
-      model.addAttribute("friends", friends);
+      List<Page> interests = facebook.likeOperations().getInterests();
+      model.addAttribute("username", facebook.userOperations().getUserProfile().getName());
+      model.addAttribute("interests", interests);
     } catch (Exception ex) {
        return "error";
     }
     return "home";
+  }
+  
+  @RequestMapping(value = "/friends_by_interest", method = RequestMethod.GET)
+  public @ResponseBody List<String> friendsByInterest(@RequestParam("interest") String interest) {
+    List<Reference> friends = facebook.friendOperations().getFriends();
+    List<String> res = new ArrayList<String>();
+    for (Reference friend: friends) {
+      List<Page> friendInterests = facebook.likeOperations().getInterests(friend.getId());
+      for (Page page : friendInterests) {
+        if (page.getName().equals(interest)) {
+          res.add(friend.getName());
+          break;
+        }
+      }
+    }
+    return res;
   }
 
 }
